@@ -19,7 +19,7 @@ export class App extends Component {
     }
   }
 
-  componentDidUpdate(prevState) {
+  componentDidUpdate(_, prevState) {
     const prevStateContacts = prevState.contacts;
     const nextStayContacts = this.state.contacts;
 

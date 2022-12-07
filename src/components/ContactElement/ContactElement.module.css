@@ -19,7 +19,8 @@
     cursor: pointer;
 }
 
-.contactListItemBtn:hover {
+.contactListItemBtn:hover,
+.contactListItemBtn:focus {
     background-color: #972c28;
     cursor: pointer;
     box-shadow: #972c28 0px 5px 15px;

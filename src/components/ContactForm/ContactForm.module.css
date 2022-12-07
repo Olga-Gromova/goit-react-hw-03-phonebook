@@ -34,7 +34,8 @@
     cursor: pointer;
 }
 
-.formBtn:hover {
+.formBtn:hover,
+.formBtn:focus {
     background-color: #38a04a;
     cursor: pointer;
     color: yellow;
