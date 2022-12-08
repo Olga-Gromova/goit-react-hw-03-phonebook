@@ -15,7 +15,6 @@
     margin-right: 6px;
     min-width: 50px;
     padding: 0 16px 0 16px;
-    color: white;
     cursor: pointer;
 }
 
@@ -24,4 +23,9 @@
     background-color: #972c28;
     cursor: pointer;
     box-shadow: #972c28 0px 5px 15px;
+}
+
+.contactListItem {
+    color: #0f4326;
+ 
 }
