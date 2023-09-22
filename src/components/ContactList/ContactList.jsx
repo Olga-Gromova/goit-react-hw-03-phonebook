@@ -1,5 +1,5 @@
 import { ContactElement } from 'components/ContactElement/ContactElement';
-import propTypes from 'prop-types';
+
 
 
 export const ContactList = ({ contacts, handleDelete }) => (
@@ -18,14 +18,3 @@ export const ContactList = ({ contacts, handleDelete }) => (
  
 );
 
-
-ContactList.propTypes = {
-  contacts: propTypes.arrayOf(
-    propTypes.exact({
-      id: propTypes.string.isRequired,
-      name: propTypes.string.isRequired,
-      number: propTypes.string.isRequired,
-    })
-  ),
-  handleDelete: propTypes.func.isRequired,
-};

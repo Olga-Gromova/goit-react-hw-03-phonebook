@@ -1,4 +1,4 @@
-@import-normalize;
+/* @import-normalize; */
 /* bring in normalize.css styles */
 
 body {
@@ -8,6 +8,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f5cc97;
 }
 
 code {

@@ -1,4 +1,3 @@
-import propTypes from 'prop-types';
 import css from './ContactElement.module.css';
 
 export const ContactElement = ({ id, name, number, handleDelete }) => (
@@ -13,10 +12,3 @@ export const ContactElement = ({ id, name, number, handleDelete }) => (
           </button>
         </li>
 );
-
-ContactElement.propTypes = {
-  id: propTypes.string.isRequired,
-  name: propTypes.string.isRequired,
-  number: propTypes.string.isRequired,
-  handleDelete: propTypes.func.isRequired,
-};

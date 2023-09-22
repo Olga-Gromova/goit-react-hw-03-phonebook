@@ -1,6 +1,7 @@
 .form {
     display: flex;
     flex-direction: column;
+
 }
 
 .formName,
@@ -12,6 +13,7 @@
     font-size: large;
     text-align: left;
     padding: 0.5rem 15rem 0.5rem 1rem;
+
 }
 
 .formBtn {
@@ -30,7 +32,7 @@
     margin-right: 6px;
     min-width: 185px;
     padding: 0 16px 0 16px;
-    cursor: pointer;
+
 }
 
 .formBtn:hover,
