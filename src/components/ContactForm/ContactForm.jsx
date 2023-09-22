@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import css from './ContactForm.module.css';
-
 export default class ContactForm extends Component {
   state = {
     name: '',
@@ -36,8 +35,8 @@ export default class ContactForm extends Component {
   render() {
     return (
       <form className={css.form} onSubmit={this.handleSubmit}>
-        <h2>Please, input new name & number</h2>
-        <label className={css.formLabel}>
+        <h2 className={css.formTitle}>Please, input new name & number</h2>
+        <label>
           Name
           <input
             className={css.formName}
@@ -52,7 +51,7 @@ export default class ContactForm extends Component {
             autoComplete="name"
           />
         </label>
-        <label className={css.formLabel}>
+        <label>
           Number
           <input
             className={css.formNumber}

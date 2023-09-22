@@ -1,7 +1,6 @@
 .form {
     display: flex;
     flex-direction: column;
-
 }
 
 .formName,
@@ -13,7 +12,6 @@
     font-size: large;
     text-align: left;
     padding: 0.5rem 15rem 0.5rem 1rem;
-
 }
 
 .formBtn {
@@ -32,7 +30,6 @@
     margin-right: 6px;
     min-width: 185px;
     padding: 0 16px 0 16px;
-
 }
 
 .formBtn:hover,
@@ -41,4 +38,17 @@
     cursor: pointer;
     color: yellow;
     text-shadow: yellow 0px 5px 15px;
+}
+
+.formNumber:focus,
+.formNumber:hover,
+.formName:focus,
+.formName:hover {
+    background-color: rgba(239, 212, 186, 0.956);
+}
+
+.formTitle {
+    margin-top: auto;
+    margin-bottom: auto;
+    text-align: center;
 }

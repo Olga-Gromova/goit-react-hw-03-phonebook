@@ -6,5 +6,9 @@
     font-size: large;
     text-align: left;
     padding: 0.5rem 15rem 0.5rem 1rem;
+}
 
+.filterName:focus,
+.filterName:hover {
+    background-color: rgba(239, 212, 186, 0.956);
 }

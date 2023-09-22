@@ -4,6 +4,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 20px;
     color: #241937;
+}
+
+.mainTitle {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.mainTitleContacts {
+    margin-top: auto;
 }
