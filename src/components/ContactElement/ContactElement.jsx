@@ -1,3 +1,4 @@
+import React from 'react';
 import css from './ContactElement.module.css';
 
 export const ContactElement = ({ id, name, number, handleDelete }) => (

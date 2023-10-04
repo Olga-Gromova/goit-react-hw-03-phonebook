@@ -1,81 +1,75 @@
-import { Component } from 'react';
+import { useState, useEffect } from 'react';
+import React from 'react';
 import { nanoid } from 'nanoid';
+
 import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
-import ContactForm from 'components/ContactForm/ContactForm';
+import { ContactForm } from 'components/ContactForm/ContactForm';
 import css from 'App.module.css';
-export class App extends Component {
-  state = {
-    contacts: [],
-    filter: '',
-  };
 
-  componentDidMount() {
-    const localContact = localStorage.getItem('contactList');
-    const parcedContact = JSON.parse(localContact);
-    if (parcedContact) {
-      this.setState({ contacts: [...parcedContact] });
-    }
-  }
+export const App = () => {
+  const [contacts, setContacts] = useState(() => {
+    const storedContacts = localStorage.getItem('contacts');
+    return storedContacts ? JSON.parse(storedContacts) : [];
+  });
+  const [filter, setFilter] = useState('');
 
-  componentDidUpdate(_, prevState) {
-    const prevStateContacts = prevState.contacts;
-    const nextStayContacts = this.state.contacts;
-    if (prevStateContacts !== nextStayContacts) {
-      localStorage.setItem('contactList', JSON.stringify(nextStayContacts));
-    }
-  }
+  useEffect(() => {
+    localStorage.setItem('contacts', JSON.stringify(contacts));
+  }, [contacts]);
 
-  handleDelete = event => {
-    this.setState(prevState => {
-      return {
-        contacts: prevState.contacts.filter(contact => contact.id !== event),
-      };
-    });
-  };
-
-  handleChange = event => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
-  };
-
-  handleSubmit = event => {
-    const id = nanoid();
-    const name = event.name;
-    const number = event.number;
-    const contactsLists = [...this.state.contacts];
-    if (contactsLists.findIndex(contact => name === contact.name) !== -1) {
-      alert(
-        `Please, pay attention: Contact with name "${name}" have already included in this phonebook.`
-      );
-    } else {
-      contactsLists.push({ name, id, number });
-    }
-    this.setState({ contacts: contactsLists });
-  };
-
-  getFilteredContacts = () => {
-    const filterContactsList = this.state.contacts.filter(contact => {
-      return contact.name
-        .toLowerCase()
-        .includes(this.state.filter.toLowerCase());
-    });
-    return filterContactsList;
-  };
-
-  render() {
-    const { filter } = this.state;
-    return (
-      <div className={css.mainDiv}>
-        <h1 className={css.mainTitle}>Phonebook</h1>
-        <ContactForm handleSubmit={this.handleSubmit} />
-        <h2 className={css.mainTitleContacts}> Contacts</h2>
-        <Filter filter={filter} handleChange={this.handleChange} />
-        <ContactList
-          contacts={this.getFilteredContacts()}
-          handleDelete={this.handleDelete}
-        />
-      </div>
+  const handleSubmit = newContact => {
+    const isContactExicts = contacts.find(
+      contact =>
+        contact.name.toLocaleLowerCase() === newContact.name.toLocaleLowerCase()
     );
-  }
-}
+    if (isContactExicts) {
+      return alert(
+        `Please, pay attention: Contact with name "${newContact.name}" have already included in this phonebook.`
+      );
+    }
+    const contactToAdd = {
+      ...newContact,
+      id: nanoid(),
+    };
+    setContacts(prevContacts => {
+      return [...prevContacts, contactToAdd];
+    });
+  };
+
+  //  const onChangeFilter = ({ target: { value } }) => {
+  //     setFilter(value);
+  //   };
+
+  const onChangeFilter = event => {
+    setFilter(event.currentTarget.value);
+  };
+
+  const handleDeleteContacts = contactId => {
+    setContacts(prevContacts =>
+      prevContacts.filter(contact => contact.id !== contactId)
+    );
+  };
+
+  const getFilteredContacts = () => {
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+    );
+  };
+
+  const filterContacts = getFilteredContacts();
+
+  return (
+    <div className={css.mainDiv}>
+      <h1 className={css.mainTitle}>Phonebook</h1>
+      <ContactForm onSubmit={handleSubmit} />
+      <h2 className={css.mainTitleContacts}> Contacts</h2>
+      <Filter value={filter} onChange={onChangeFilter} />
+      <ContactList
+        contacts={filterContacts}
+        handleDelete={handleDeleteContacts}
+      />
+    </div>
+  );
+};
+export default App;

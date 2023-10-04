@@ -1,6 +1,7 @@
+import React from 'react';
 import css from './Filter.module.css';
 
-export const Filter = ({ filter, handleChange }) => (
+export const Filter = ({ filter, onChange }) => (
   <div>
     <label>
       Find contacts by Name
@@ -10,7 +11,7 @@ export const Filter = ({ filter, handleChange }) => (
         name="filter"
         placeholder="Enter filter"
         value={filter}
-        onChange={handleChange}
+        onChange={onChange}
       />
     </label>
   </div>
